@@ -1,0 +1,18 @@
+mysql:
+  image: mysql
+  volumes:
+   - ./docker/mysql/data:/var/lib/mysql
+  environment:
+   - DB_NAME=some
+   - DB_USER=some
+   - DB_PASS=some
+
+nginx:
+  build: ./nginx-php-fpm/
+  ports:
+    - "8000:80"
+  volumes:
+    - $PWD:/app
+    - ./docker/nginx:/etc/nginx/sites-available
+  links:
+    - mysql:db
