@@ -1,7 +1,7 @@
 mysql:
   image: mysql
   volumes:
-   - ./docker/mysql/data:/var/lib/mysql
+   - ./app/docker/mysql/data:/var/lib/mysql
   environment:
    - DB_NAME=some
    - DB_USER=some
@@ -12,7 +12,7 @@ nginx:
   ports:
     - "8000:80"
   volumes:
-    - $PWD:/usr/share/nginx/html
-    - ./docker/nginx:/etc/nginx/sites-available
+    - ./app:/usr/share/nginx/html
+    - ./app/docker/nginx:/etc/nginx/sites-available
   links:
     - mysql:db
