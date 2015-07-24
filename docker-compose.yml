@@ -15,5 +15,6 @@ nginx:
   volumes:
     - ./app:/usr/share/nginx/html
     - ./app/docker/nginx:/etc/nginx/sites-available
+    - ./app/docker/log/nginx:/var/log/nginx/
   links:
     - mysql:db
