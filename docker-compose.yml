@@ -1,4 +1,4 @@
-mysql:
+mysql: # comment whole block if db container exists
   image: mysql
   volumes:
    - ./app/docker/mysql/data:/var/lib/mysql
@@ -16,5 +16,7 @@ nginx:
     - ./app:/usr/share/nginx/html
     - ./app/docker/nginx:/etc/nginx/sites-available
     - ./app/docker/log/nginx:/var/log/nginx/
-  links:
+  links: # comment if db container exists
     - mysql:db
+#  external_links: # uncomment to connect to existing db container
+#    - project_db_1:db
